@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>typeof</title>
+</head>
+
+<body>
+  <p id="demo"></p>
+  <p id="demo2"></p>
+  <p id="demo3"></p>
+
+  <!-- The void Operator -->
+  <p>
+    <a href="javascript:void(0);">Useless link</a>
+  </p>
+
+  <p>
+    <a href="javascript:void(document.body.style.backgroundColor='red');">
+      Click me to change the background color of body to red.</a>
+  </p>
+
+  <script>
+    typeof "John"                 // Returns "string"
+    typeof 3.14                   // Returns "number"
+    typeof NaN                    // Returns "number"
+    typeof false                  // Returns "boolean"
+    typeof [1, 2, 3, 4]              // Returns "object"
+    typeof { name: 'John', age: 34 }  // Returns "object"
+    typeof new Date()             // Returns "object"
+    typeof function () { }         // Returns "function"
+    typeof myCar                  // Returns "undefined" *
+    typeof null                   // Returns "object"
+
+    typeof "John"              // Returns "string"
+    typeof 3.14                // Returns "number"
+    typeof true                // Returns "boolean"
+    typeof false               // Returns "boolean"
+    typeof x                   // Returns "undefined" (if x has no value)
+
+    typeof { name: 'John', age: 34 } // Returns "object"
+    typeof [1, 2, 3, 4]             // Returns "object" (not "array", see note below)
+    typeof null                  // Returns "object"
+    typeof function myFunc() { }   // Returns "function"
+
+    document.getElementById("demo").innerHTML =
+      "john".constructor + "<br>" +
+      (3.14).constructor + "<br>" +
+      false.constructor + "<br>" +
+      [1, 2, 3, 4].constructor + "<br>" +
+      { name: 'john', age: 34 }.constructor + "<br>" +
+      new Date().constructor + "<br>" +
+      function () { }.constructor;
+
+    const fruits = ["Banana", "Orange", "Apple"];
+    document.getElementById("demo2").innerHTML = isArray(fruits);
+
+    function isArray(myArray) {
+      return myArray.constructor.toString().indexOf("Array") > -1;
+    }
+
+    document.getElementById("demo3").innerHTML = isArray(fruits);
+
+    function isArray(myArray) {
+      return myArray.constructor === Array;
+    }
+
+    const myDate = new Date();
+    function isDate(myDate) {
+      return myDate.constructor.toString().indexOf("Date") > -1;
+    } // 
+
+    function isDate(myDate) {
+      return myDate.constructor === Date;
+    } //true
+
+    //Undefined
+    let car;    // Value is undefined, type is undefined
+    car = undefined;    // Value is undefined, type is undefined
+
+    //Null
+    let person = { firstName: "John", lastName: "Doe", age: 50, eyeColor: "blue" };
+    person = null;    // Now value is null, but type is still an object
+    person = undefined;   // Now both value and type is undefined
+
+
+    //Difference Between Undefined and Null
+    typeof undefined           // undefined
+    typeof null                // object
+
+    null === undefined         // false
+    null == undefined          // true
+
+    //The instanceof Operator
+    {
+      const cars = ["Saab", "Volvo", "BMW"];
+
+      (cars instanceof Array); //true
+      (cars instanceof Object); //true
+      (cars instanceof String); //false
+      (cars instanceof Number); //false
+    }
+
+
+  </script>
+</body>
+
+</html>

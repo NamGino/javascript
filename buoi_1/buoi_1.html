@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buoi1</title>
+</head>
+
+<body>
+    <p id="demo">JavaScript can change HTML content.</p>
+
+    <button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button>
+    <button type="button" onclick="document.getElementById('demo').style.fontSize='35px'">Click Me!</button>
+    <button type="button" onclick="document.getElementById('demo').style.fontSize='10px'">Click Me!</button>
+    <button type="button" onclick="document.getElementById('demo').style.display='none'">Click Me!</button>
+    <button type="button" onclick="document.getElementById('demo').style.display='block'">Click Me!</button>
+    <button type="button" onclick="myFunction()">Click Me</button>
+    <button type="button" onclick="document.write(5 + 6)">Try it</button>
+    <button onclick="window.print()">Print this page</button>
+    <br>
+    <button onclick="document.getElementById('myImage').src='./accsset/pic_bulbon.gif'">Turn on the light</button>
+
+    <img id="myImage" src="./accsset/pic_bulboff.gif" style="width:100px">
+
+    <button onclick="document.getElementById('myImage').src='./accsset/pic_bulboff.gif'">Turn off the light</button>
+    <br>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <h1 id="myH"></h1>
+    <p id="myP"></p>
+    <script src="./buoi_1.js"></script>
+    <script>
+        document.getElementById("demo").innerHTML = 5 + 6;
+        document.write(5 + 6);
+        window.alert(5 + 6);
+        console.log(5 + 6);
+        let a, b, c;  // Declare 3 variables
+        a = 8;        // Assign the value 5 to a
+        b = 10;        // Assign the value 6 to b
+        c = a + b;    // Assign the sum of a and b to c
+        document.getElementById("demo1").innerHTML = c;
+        let x;
+        x = 6;
+        document.getElementById("demo2").innerHTML = x;
+        let lastname, lastName;
+lastName = "Doe";
+lastname = "Peterson";
+document.getElementById("demo3").innerHTML = lastName + " "+ lastname;
+// Change heading:
+document.getElementById("myH").innerHTML = "JavaScript Comments";
+// Change paragraph:
+document.getElementById("myP").innerHTML = "My first paragraph.";
+    </script>
+</body>
+
+</html>
