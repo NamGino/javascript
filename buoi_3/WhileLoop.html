@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While Loop</title>
+</head>
+
+<body>
+    <script>
+        {
+            let text = "";
+            let i = 0;
+            while (i < 10) {
+                text += "<br>The number is " + i;
+                i++;
+            }
+        }
+        // text =  The number is 0
+        //         The number is 1
+        //         The number is 2
+        //         The number is 3
+        //         The number is 4
+        //         The number is 5
+        //         The number is 6
+        //         The number is 7
+        //         The number is 8
+        //         The number is 9
+
+        //The Do While Loop
+        {
+            let text = ""
+            let i = 0;
+
+            do {
+                text += "<br>The number is " + i;
+                i++;
+            }
+            while (i < 10);
+        }
+        // text =  The number is 0
+        //         The number is 1
+        //         The number is 2
+        //         The number is 3
+        //         The number is 4
+        //         The number is 5
+        //         The number is 6
+        //         The number is 7
+        //         The number is 8
+        //         The number is 9
+
+
+        //Comparing For and While
+        //For
+        {
+            const cars = ["BMW", "Volvo", "Saab", "Ford"];
+
+            let i = 0;
+            let text = "";
+            for (; cars[i];) {
+                text += cars[i] + " ";
+                i++;
+            }
+        }//text = BMW Volvo Saab Ford
+
+        //While
+        {
+            const cars = ["BMW", "Volvo", "Saab", "Ford"];
+
+            let i = 0;
+            let text = "";
+            while (cars[i]) {
+                text += cars[i] + " ";
+                i++;
+            }
+        }//text = BMW Volvo Saab Ford
+    </script>
+</body>
+
+</html>
