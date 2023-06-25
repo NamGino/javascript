@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definitions</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+
+    <script>
+        let x = myFunction(4, 3);
+        document.getElementById("demo").innerHTML = x;
+
+        function myFunction(a, b) {
+            return a * b;
+        }
+
+        const a = function (a, b) { return a * b };
+        document.getElementById("demo").innerHTML = a;
+
+        const c = function (a, b) { return a * b };
+        document.getElementById("demo").innerHTML = c(4, 3);
+
+        const myFunction = new Function("a", "b", "return a * b");
+        document.getElementById("demo").innerHTML = myFunction(4, 3);
+
+        const myFunction = function (a, b) { return a * b }
+        document.getElementById("demo").innerHTML = myFunction(4, 3);
+
+        (function () {
+            document.getElementById("demo").innerHTML = "Hello! I called myself";
+        })();
+
+
+        function myFunction(a, b) {
+            return a * b;
+        }
+        let e = myFunction(4, 3);
+        document.getElementById("demo").innerHTML = e;
+
+        function myFunction(a, b) {
+            return arguments.length;
+        }
+        document.getElementById("demo").innerHTML = myFunction(4, 3);
+
+        function myFunction(a, b) {
+            return a * b;
+        }
+        document.getElementById("demo").innerHTML = myFunction.toString();
+
+        const f = (x, y) => x * y;
+        document.getElementById("demo").innerHTML = f(5, 5);
+
+        const g = (x, y) => { return x * y };
+        document.getElementById("demo").innerHTML = g(5, 5);
+    </script>
+</body>
+
+</html>
