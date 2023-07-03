@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings</title>
+</head>
+<body>
+    <p>A JavaScript string is zero or more characters written inside quotes.</p>
+    <p>Can use single or double quotes</p>
+    <p>You can use quotes inside a string, as long as they don't match the quotes surrounding the string</p>
+    <b>String Length</b>
+    <p>To find the length of a string, use the built-in length property</p>
+    <script>
+        let txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let length = text.length;
+    </script>
+
+    <h2>Escape Character</h2>
+    <p>
+        Because strings must be written within quotes, JavaScript will misunderstand this string:
+            let text = "We are the so-called "Vikings" from the north.";
+    </p>
+    <p>The string will be chopped to "We are the so-called ".
+        The solution to avoid this problem, is to use the backslash escape character.
+    </p>
+    <script>
+        // The sequence \"  inserts a double quote in a string:
+        let text = "We are the so-called \"Vikings\" from the north.";
+
+        // The sequence \'  inserts a single quote in a string:
+        let text1= 'It\'s alright.';
+
+
+        // The sequence \\  inserts a backslash in a string:
+        let text2 = "The character \\ is called backslash.";
+    </script>
+
+
+    <h2>Breaking Long Code Lines</h2>
+    <p>For best readability, programmers often like to avoid code lines longer than 80 characters.</p>
+    <p>If a JavaScript statement does not fit on one line, the best place to break it is after an operator</p>
+    <p>You can also break up a code line within a text string with a single backslash(\)</p>
+    <script>
+        document.getElementById("demo").innerHTML = "Hello \
+        Dolly!";
+
+
+        // A safer way to break up a string, is to use string addition:
+        document.getElementById("demo").innerHTML = "Hello " +
+        "Dolly!";
+    </script>
+
+
+    <h2>JavaScript Strings as Objects</h2>
+    <p>Normally, JavaScript strings are primitive values, created from literals:</p>
+    <b>
+        Do not create Strings objects.
+        The new keyword complicates the code and slows down execution speed.
+        String objects can produce unexpected results
+    </b>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Methods</title>
+</head>
+<body>
+    <h1>JavaScript String Length</h1>
+    <p>The length property returns the length of a string</p>
+
+    <h1>Trích xuất các phần chuỗi</h1>
+    <p>
+        Có 3 phương pháp để trích xuất một phần của chuỗi:
+            slice(start, end)
+            substring(start, end)
+            substr(start, length)
+    </p>
+
+
+    <h1>JavaScript String slice()</h1>
+    <p id="demo"></p>
+    <script>
+        let text = "Apple, Banana, Kiwi";
+        let par = text.slice(7,13);
+        document.getElementById("demo").innerHTML = part; 
+        
+        // If you omit the second parameter, the method will slice out the rest of the string:
+        let part1 = text.slice(7);
+
+        // If a parameter is negative, the position is counted from the end of the string:
+        let part2 = text.slice(-12);
+    </script>
+    <b>
+        JavaScript counts positions from zero.
+        First position is 0.
+        Second position is 1.
+    </b>
+
+
+    <h1>JavaScript String substring()</h1>
+    <p>
+        substring()tương tự như slice().
+        Sự khác biệt là các giá trị bắt đầu và kết thúc nhỏ hơn 0 được coi là 0 trong substring().
+    </p>
+
+
+    <h1>JavaScript String substr()</h1>
+    <p>
+        substr()tương tự như slice().
+        Sự khác biệt là tham số thứ hai chỉ định độ dài của phần được trích xuất
+        Nếu tham số đầu tiên là số âm, vị trí sẽ được tính từ cuối chuỗi.
+    </p>
+
+
+
+    <h1>Replacing String Content</h1>
+    <p>The replace() method replaces a specified value with another value in a string</p>
+    <b>
+        The replace() method does not change the string it is called on.
+        The replace() method returns a new string.
+        The replace() method replaces only the first match
+        If you want to replace all matches, use a regular expression with the /g flag set
+    </b>
+    <p>
+        By default, the replace() method replaces only the first match
+        By default, the replace() method is case sensitive. Writing MICROSOFT (with upper-case) will not work
+        <b>To replace case insensitive, use a regular expression with an /i flag (insensitive)</b>
+        <b>To replace all matches, use a regular expression with a /g flag (global match)</b>
+    </p>
+
+
+    <h1>JavaScript String ReplaceAll()</h1>
+    <p>
+        Phương thức này replaceAll()cho phép bạn chỉ định một biểu thức chính quy thay vì một chuỗi được thay thế.
+        Nếu tham số là một biểu thức chính quy, cờ chung (g) phải được đặt, nếu không thì TypeError sẽ được đưa ra
+    </p>
+    <script>
+        let textt = "I love cats. Cats are very easy to love. Cats are very popular";
+        text = textt.replaceAll(/Cats/g,"Dogs");
+        text = textt.replaceAll(/cats/g,"dogs");
+        
+        document.getElementById("demo").innerHTML = text;
+    </script>
+
+
+    <h1>JavaScript String toUpperCase()</h1>
+    <h1>JavaScript String toLowerCase()</h1>
+
+
+    <h1>JavaScript String concat()</h1>
+    <script>
+        let text1 = "Hello";
+        let text2 = "World!";
+        let text3 = text1.concat(" ",text2);
+        document.getElementById("demo").innerHTML = text3;
+    </script>
+
+    <h1>JavaScript String trim()</h1>
+    <p>Phương trim()thức xóa khoảng trắng ở cả hai phía của chuỗi:</p>
+
+
+    <h1>JavaScript String trimStart()</h1>
+    <p>Phương thức này trimStart()hoạt động như trim(), nhưng chỉ loại bỏ khoảng trắng ở đầu chuỗi</p>
+
+
+    <h1>JavaScript String trimEnd()</h1>
+    <p>Phương thức này trimEnd()hoạt động như trim(), nhưng chỉ loại bỏ khoảng trắng ở cuối chuỗi</p>
+
+
+    <h1>JavaScript String padStart()</h1>
+    <p>
+        The padStart() method pads a string from the start.
+        It pads a string with another string (multiple times) until it reaches a given length.
+    </p>
+    <script>
+        // To pad a number, convert the number to a string first.
+        let numb = 5;
+        let textc = numb.toString();
+        let padded = textc.padStart(4,"0");
+       
+    </script>
+
+
+    <h1>JavaScript String padEnd()</h1>
+    <p>The padEnd() method pads a string from the end</p>
+
+
+    <h1>charAt()</h1>
+    <p>Phương charAt()thức trả về ký tự tại một chỉ mục (vị trí) được chỉ định trong một chuỗi</p>
+
+
+    <h1>charCodeAt()</h1>
+    <p>
+        Phương charCodeAt()thức trả về unicode của ký tự tại một chỉ mục được chỉ định trong một chuỗi:
+        Phương thức này trả về mã UTF-16 (một số nguyên từ 0 đến 65535).
+    </p>
+
+
+    <h1>Chuyển đổi một chuỗi thành một mảng</h1>
+    <p>Một chuỗi có thể được chuyển đổi thành một mảng bằng split()phương thức</p>
+    <p>
+        Nếu dấu phân cách bị bỏ qua, mảng được trả về sẽ chứa toàn bộ chuỗi trong chỉ mục [0].
+        Nếu dấu phân cách là "", thì mảng được trả về sẽ là một mảng gồm các ký tự đơn
+    </p>
+    <script>
+        let textd = "Hello";
+        const myArr = textd.split("");
+        
+        text = "";
+        for (let i = 0; i < myArr.length; i++) {
+          text += myArr[i] + "<br>"
+        }
+        document.getElementById("demo").innerHTML = text;
+        </script>
+</body>
+</html>

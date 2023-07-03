@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigInt</title>
+</head>
+<body>
+    <h1>JavaScript Integer Accuracy</h1>
+    <p>
+        Trong JavaScript, tất cả các số được lưu trữ ở định dạng dấu phẩy động 64-bit (tiêu chuẩn IEEE 754).
+        Với tiêu chuẩn này, số nguyên lớn không thể được biểu diễn chính xác và sẽ được làm tròn.
+        Do đó, JavaScript chỉ có thể biểu diễn số nguyên một cách an toàn:
+        Lên đến 9007199254740991 +(2 53 -1)
+        Và
+        Xuống tới -9007199254740991 -(2 53 -1).
+        Các giá trị số nguyên bên ngoài phạm vi này sẽ mất độ chính xác.
+    </p>
+
+
+    <p>Để tạo một BigInt, hãy thêm n vào cuối một số nguyên hoặc gọi BigInt()</p>
+    <script>
+        let x = 9999999999999999;
+        let y = 9999999999999999n;
+        // hoac:
+        let x1 = 1234567890123456789012345n;
+        let y1 = BigInt(1234567890123456789012345)
+    </script>
+
+
+    <h1>BigInt: Kiểu dữ liệu JavaScript mới</h1>
+    <p>JavaScript typeofa BigIntlà "bigint"</p>
+
+
+    <h1>Toán tử BigInt</h1>
+    <p>Các toán tử có thể được sử dụng trên JavaScript Number cũng có thể được sử dụng trên BigInt.</p>
+
+
+    <h1>Số thập phân BigInt</h1>
+    <p>BigIntkhông thể có số thập phân.</p>
+
+
+    <h1>BigInt Hex, Octal và Binary</h1>
+    <p>BigIntcũng có thể được viết bằng ký hiệu thập lục phân, bát phân hoặc nhị phân</p>
+    <script>
+        let hex = 0x20000000000003n;
+        let oct = 0o400000000000000003n
+        let bin = 0b100000000000000000000000000000000000000000000000000011n;
+    </script>
+
+
+    <h1>Phương thức Number.isInteger()</h1>
+    <p>Phương Number.isInteger()thức trả về truenếu đối số là một số nguyên.</p>
+
+
+    <h1>Phương thức Number.isSafeInteger()</h1>
+    <p>
+        Số nguyên an toàn là số nguyên có thể được biểu diễn chính xác dưới dạng số chính xác kép.
+        Phương Number.isSafeInteger()thức trả về true nếu đối số là một số nguyên an toàn.
+    </p>
+    <b>
+        Số nguyên an toàn là tất cả các số nguyên từ -(2^53 - 1) đến +(2^53 - 1).
+        Số này an toàn: 9007199254740991. Số này không an toàn: 9007199254740992
+    </b>
+</body>
+</html>

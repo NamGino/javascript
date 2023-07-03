@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Arrays</title>
+</head>
+<body>
+    <script>
+        // Phương sort()thức sắp xếp một mảng theo thứ tự bảng chữ cái:
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        fruits.sort();
+
+        // Phương reverse()thức đảo ngược các phần tử trong một mảng.
+        fruits.reverse();
+
+        // Sắp xếp một mảng theo thứ tự ngẫu nhiên
+        const points = [40, 100, 1, 5, 25, 10];
+        points.sort(function(){return 0.5 - Math.random()});
+
+        // Phương pháp Fisher Yates
+        for (let i = points.length -1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i+1));
+            let k = points[i];
+            points[i] = points[j];
+            points[j] = k;
+        }
+
+        // Tìm giá trị mảng cao nhất (hoặc thấp nhất):  có thể sử dụng chỉ mục để lấy giá trị cao nhất và thấp nhất
+        points.sort(function(a, b){return a - b});
+
+        // Sử dụng Math.max() trên Mảng
+        function myArrayMax(arr) {
+            return Math.max.apply(null, arr);
+        }
+
+
+        // Sử dụng Math.min() trên Mảng
+        function myArrayMin(arr) {
+            return Math.min.apply(null, arr);
+        }
+
+        // Tìm Max
+        function myArrayMax(arr) {
+            let len = arr.length;
+            let max = -Infinity;
+            while (len--) {
+                if (arr[len] > max) {
+                max = arr[len];
+                }
+            }
+            return max;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Date Methods</title>
+</head>
+<body>
+    <h1> new Date() Constructor</h1>
+    <p>new Date()trả về một đối tượng ngày với ngày và giờ hiện tại.</p>
+
+    <h1>getFullYear()</h1>
+    <p>Phương getFullYear()thức trả về năm của một ngày dưới dạng một số có bốn chữ số</p>
+    <script>
+        const d = new Date();
+        d.getFullYear();
+    </script>
+
+
+    <h1>Phương thức getMonth()</h1>
+    <p>Phương thức này getMonth()trả về tháng của một ngày dưới dạng số (0-11)</p>
+    <script>
+        const d2 = new Date();
+        d2.getMonth();
+        // Bạn có thể sử dụng một mảng tên để trả về tháng dưới dạng tên
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const d1 = new Date();
+        let month = months[d.getMonth()];
+    </script>
+
+
+    <h1>Phương thức getDate()</h1>
+    <p>Phương getDate()thức trả về ngày của một ngày dưới dạng số (1-31)</p>
+
+
+    <h1>Phương thức getHours()</h1>
+    <p>Phương getHours()thức trả về giờ của một ngày dưới dạng số (0-23)</p>
+
+
+    <h1>Phương thức getMinutes()</h1>
+    <p>Phương getMinutes()thức trả về số phút của một ngày dưới dạng số (0-59)</p>
+
+    <h1>Phương thức getSeconds()</h1>
+    <p>Phương getSeconds()thức trả về giây của một ngày dưới dạng số (0-59)</p>
+
+    <h1>Phương thức getMilliseconds()</h1>
+    <p>Phương getMilliseconds()thức trả về mili giây của một ngày dưới dạng một số (0-999)</p>
+
+    <h1>Phương thức getDay()</h1>
+    <p>Phương getDay()thức trả về ngày trong tuần của một ngày dưới dạng số (0-6)</p>
+
+    <h1>Phương thức getTime()</h1>
+    <p>Phương getTime()thức trả về số mili giây kể từ ngày 1 tháng 1 năm 1970</p>
+
+    <h1>Phương thức Date.now()</h1>
+    <p>Date.now()trả về số mili giây kể từ ngày 1 tháng 1 năm 1970</p>
+
+    <h1>Phương thức getTimezoneOffset()</h1>
+    <p>Phương getTimezoneOffset()thức trả về sự khác biệt (tính bằng phút) giữa giờ địa phương và giờ UTC</p>
+</body>
+</html>
