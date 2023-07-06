@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronous</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+
+    <script>
+        function myDisplayer(something) {
+            document.getElementById("demo").innerHTML = something;
+        }
+
+        function myCalculator(num1, num2, myCallback) {
+            let sum = num1 + num2;
+            myCallback(sum);
+        }
+
+        myCalculator(5, 5, myDisplayer);
+
+        {
+            setTimeout(myFunction, 3000);
+
+            function myFunction() {
+                document.getElementById("demo").innerHTML = "I love You !!";
+            }
+        }
+
+        {
+            setInterval(myFunction, 1000);
+
+            function myFunction() {
+                let d = new Date();
+                document.getElementById("demo").innerHTML =
+                    d.getHours() + ":" +
+                    d.getMinutes() + ":" +
+                    d.getSeconds();
+            }
+        }
+    </script>
+</body>
+
+</html>
