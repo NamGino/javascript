@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX - The XMLHttpRequest Object</title>
+</head>
+<body>
+<div id="demo">
+    <p>Let AJAX change this text.</p>
+    <button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+<script>
+    /**
+     * Nền tảng của AJAX là đối tượng XMLHttpRequest.
+     *
+     * 1.Tạo một đối tượng XMLHttpRequest
+     * 2.Xác định chức năng gọi lại
+     * 3.Mở đối tượng XMLHttpRequest
+     * 4.Gửi yêu cầu đến máy chủ*/
+
+    //Cú pháp tạo XMLHttpRequestđối tượng -> variable = new XMLHttpRequest();
+
+    /**
+     * Define a Callback Function (Xác định chức năng gọi lại)
+     * Hàm gọi lại là một hàm được truyền dưới dạng tham số cho một hàm khác.
+     * Trong trường hợp này, chức năng gọi lại sẽ chứa mã để thực thi khi phản hồi sẵn sàng
+     *
+     * xhttp.onload = function() {
+     *   // What to do when the response is ready
+     * }
+     *
+     * Send a Request(Gửi yêu cầu)
+     * Để gửi một yêu cầu đến một máy chủ, bạn có thể sử dụng các phương thức open() và send() của đối tượng XMLHttpRequest:
+     * xhttp.open("GET", "ajax_info.txt");
+     * xhttp.send();
+     *
+     *
+     * The onload Property (Thuộc tính onload)
+     * bạn có thể xác định hàm gọi lại sẽ được thực thi khi yêu cầu nhận được câu trả lời.
+     * Hàm này được định nghĩa trong thuộc tính onload của đối tượng XMLHttpRequest:
+     * */
+
+    function loadDoc() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("demo").innerHTML = this.responseText;
+        }
+        xhttp.open("GET", "ajax_info.txt");
+        xhttp.send();
+    }
+
+
+    /**
+     * XMLHttpRequest Object Properties (thuộc tính)
+     * onload -> Xác định một chức năng sẽ được gọi khi nhận được yêu cầu (được tải)
+     * onreadystatechange -> Định nghĩa một hàm sẽ được gọi khi thuộc tính readyState thay đổi
+     * readyState -> Holds the status of the XMLHttpRequest.
+     *              0: request not initialized
+     *              1: server connection established
+     *              2: request received
+     *              3: processing request
+     *              4: request finished and response is ready
+     * responseText -> Trả về dữ liệu phản hồi dưới dạng chuỗi
+     * responseXML -> Trả về dữ liệu phản hồi dưới dạng dữ liệu XML
+     * status -> Trả về số trạng thái của một yêu cầu
+     *          200: "OK"
+     *          403: "Forbidden"
+     *          404: "Not Found"
+     * statusText -> Trả về văn bản trạng thái (ví dụ: "OK" or "Not Found")*/
+</script>
+</body>
+</html>

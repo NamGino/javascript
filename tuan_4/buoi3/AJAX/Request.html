@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX - XMLHttpRequest</title>
+</head>
+<body>
+<!--Đối tượng XMLHttpRequest được sử dụng để yêu cầu dữ liệu từ máy chủ.-->
+<p id="demo"></p>
+<button type="button" onclick="loadDoc()">Request data</button>
+<script>
+    /**
+     * Send a Request To a Server (Gửi yêu cầu đến máy chủ)
+     * Để gửi một yêu cầu đến một máy chủ, chúng ta sử dụng các phương thức open() và send() của đối tượng XMLHttpRequest:
+     * open(method, url, async) -> phương thức: loại yêu cầu: GET hoặc POST
+     *                              url: vị trí máy chủ (tệp)
+     *                              async: true (asynchronous) or false (synchronous)
+     * send() -> Gửi yêu cầu đến máy chủ (được sử dụng cho GET)
+     * send(string) -> Gửi yêu cầu đến máy chủ (được sử dụng cho POST)*/
+
+    xhttp.open("GET", "ajax_info.txt", true);
+    xhttp.send();
+
+
+    //The url - A File On a Server (Url - Một tệp trên máy chủ)
+    //Tham số url của phương thức open(), là địa chỉ của tệp trên máy chủ:
+    xhttp.open("GET", "ajax_test.asp", true);
+
+
+    //Asynchronous - True or False?(Không đồng bộ đúng hay sai)
+    // Yêu cầu máy chủ nên được gửi không đồng bộ.
+    // Tham số async của phương thức open() phải được đặt thành true
+    xhttp.open("GET", "ajax_test.asp", true);
+
+    // Bằng cách gửi không đồng bộ, JavaScript không phải chờ phản hồi của máy chủ mà thay vào đó có thể:thực thi các tập lệnh khác trong khi chờ phản hồi của máy chủ
+    // xử lý phản hồi sau khi phản hồi đã sẵn sàng
+
+    /**
+     * GET or POST?
+     * GET đơn giản và nhanh hơn POST, và có thể được sử dụng trong hầu hết các trường hợp.
+     *
+     * Tuy nhiên, hãy luôn sử dụng các yêu cầu POST khi:
+     * Tệp được lưu trong bộ nhớ cache không phải là một tùy chọn (cập nhật tệp hoặc cơ sở dữ liệu trên máy chủ).
+     * Gửi một lượng lớn dữ liệu đến máy chủ (POST không có giới hạn về kích thước).
+     * Gửi đầu vào của người dùng (có thể chứa các ký tự không xác định), POST mạnh mẽ và an toàn hơn GET.*/
+        xhttp.open("GET", "demo_get2.asp?fname=Henry&lname=Ford");
+        xhttp.send();
+
+
+     //POST Requests
+    //Để POST dữ liệu như biểu mẫu HTML, hãy thêm tiêu đề HTTP bằng setRequestHeader(). Chỉ định dữ liệu bạn muốn gửi trong phương thức send():
+    function loadDoc() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("demo").innerHTML = this.responseText;
+        }
+        xhttp.open("POST", "demo_post2.asp");
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("fname=Henry&lname=Ford");
+    }
+
+
+    //Synchronous Request (YÊU CẦU ĐỒNG BỘ )
+    //Để thực thi một yêu cầu đồng bộ, hãy thay đổi tham số thứ ba trong phương thức open() thành false:
+    xhttp.open("GET", "ajax_info.txt", false);
+</script>
+</body>
+</html>

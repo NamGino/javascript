@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Introduction</title>
+</head>
+<body>
+<div id="demo">
+  <h2>Let AJAX change this text</h2>
+  <button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+<script>
+  /**
+   * AJAX là giấc mơ của nhà phát triển, bởi vì bạn có thể:
+   *
+   * Đọc dữ liệu từ máy chủ web - sau khi trang đã được tải
+   *
+   * Cập nhật trang web mà không cần tải lại trang
+   *
+   * Gửi dữ liệu đến máy chủ web - ở chế độ nền*/
+
+  function loadDoc() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+    xhttp.open("GET", "fetch_info.txt", true);
+    xhttp.send();
+  }
+
+  /**
+   * Cách hoạt động của AJAX
+   *
+   * 1. Một sự kiện xảy ra trong trang web (trang được tải, nút được nhấp)
+   *
+   * 2. Một đối tượng XMLHttpRequest được tạo bởi JavaScript
+   *
+   * 3. Đối tượng XMLHttpRequest gửi yêu cầu đến máy chủ web
+   *
+   * 4. Máy chủ xử lý yêu cầu
+   *
+   * 5. Máy chủ gửi phản hồi trở lại trang web
+   *
+   * 6. Phản hồi được đọc bởi JavaScript
+   *
+   * 7. Hành động thích hợp (như cập nhật trang) được thực hiện bởi JavaScript
+   * */
+</script>
+</body>
+</html>

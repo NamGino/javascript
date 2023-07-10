@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX ASP Example</title>
+</head>
+<body>
+<!--AJAX được sử dụng để tạo ra nhiều ứng dụng tương tác hơn.-->
+<h2>The XMLHttpRequest Object</h2>
+<h3>Start typing a name in the input field below:</h3>
+
+<p>Suggestions: <span id="txtHint"></span></p>
+<p>First name: <input type="text" id="txt1" onkeyup="showHint(this.value)"></p>
+
+<script>
+    // Trong ví dụ trên, khi người dùng nhập một ký tự vào trường nhập liệu, một hàm có tên showHint() sẽ được thực thi.
+    // Chức năng được kích hoạt bởi sự kiện onkeyup.
+    function showHint(str) {
+        if (str.length == 0) {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        }
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("txtHint").innerHTML =
+                this.responseText;
+        }
+        xhttp.open("GET", "gethint.php?q="+str);
+        xhttp.send();
+    }
+</script>
+</body>
+</html>

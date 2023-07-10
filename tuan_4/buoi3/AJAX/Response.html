@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX - Server Response</title>
+</head>
+<body>
+<div id="demo">
+  <h2>The XMLHttpRequest Object</h2>
+  <button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+<p id="demo1"></p>
+<script>
+  /**
+   * Server Response Properties (Thuộc tính phản hồi của máy chủ)
+   * responseText -> lấy dữ liệu phản hồi dưới dạng chuỗi
+   * responseXML -> lấy dữ liệu phản hồi dưới dạng dữ liệu XML*/
+
+  //The responseText Property (Thuộc tính responseText)
+  //Thuộc tính responseText trả về phản hồi của máy chủ dưới dạng chuỗi JavaScript và bạn có thể sử dụng nó cho phù hợp:
+  function loadDoc() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+      document.getElementById("demo").innerHTML =
+              this.responseText;
+    }
+    xhttp.open("GET", "ajax_info.txt");
+    xhttp.send();
+  }
+
+  /**
+   * The responseXML Property (Thuộc tính responseXML)
+   * Đối tượng XMLHttpRequest có một trình phân tích cú pháp XML dựng sẵn.
+   * Thuộc tính responseXML trả về phản hồi của máy chủ dưới dạng một đối tượng XML DOM.
+   * Sử dụng thuộc tính này, bạn có thể phân tích cú pháp phản hồi dưới dạng đối tượng XML DOM:*/
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    const xmlDoc = this.responseXML;
+    const x = xmlDoc.getElementsByTagName("ARTIST");
+    let txt = "";
+    for (let i = 0; i < x.length; i++) {
+      txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+    }
+    document.getElementById("demo1").innerHTML = txt;
+  }
+  xhttp.open("GET", "ajax_info.txt");
+  xhttp.send();
+
+
+  /**
+   * Server Response Methods(Phương thức phản hồi của máy chủ)
+   * getResponseHeader() -> Trả về thông tin tiêu đề cụ thể từ tài nguyên máy chủ
+   * getAllResponseHeaders() -> Trả về tất cả thông tin tiêu đề từ tài nguyên máy chủ*/
+
+
+  //The getAllResponseHeaders() Method -> Phương thức getAllResponseHeaders() trả về tất cả thông tin tiêu đề từ phản hồi của máy chủ.
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML =
+            this.getAllResponseHeaders();
+  }
+  xhttp.open("GET", "ajax_info.txt");
+  xhttp.send();
+
+  //The getResponseHeader() Method -> Phương thức getResponseHeader() trả về thông tin tiêu đề cụ thể từ phản hồi của máy chủ.
+  const xhttp=new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML =
+            this.getResponseHeader("Last-Modified");
+  }
+  xhttp.open("GET", "ajax_info.txt");
+  xhttp.send();
+</script>
+</body>
+</html>

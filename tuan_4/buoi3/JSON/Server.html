@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Server</title>
+</head>
+<body>
+<p id="demo"></p>
+<script>
+  //Sending Data -> Nếu bạn có dữ liệu được lưu trữ trong một đối tượng JavaScript, bạn có thể chuyển đổi đối tượng thành JSON và gửi nó đến máy chủ:
+  const myObj = { name: "John", age: 31, city: "New York" };
+  const myJSON = JSON.stringify(myObj);
+  window.location = "demo_json.php?x=" + myJSON;
+
+  //Receiving Data (Nhận dữ liệu)
+  const myJSON1 = '{"name":"John", "age":31, "city":"New York"}';
+  const myObj = JSON.parse(myJSON1);
+  document.getElementById("demo").innerHTML = myObj.name;
+
+
+  //JSON From a Server(json từ máy chủ)
+  // Bạn có thể yêu cầu JSON từ máy chủ bằng cách sử dụng yêu cầu AJAX
+  // Miễn là phản hồi từ máy chủ được viết ở định dạng JSON, bạn có thể phân tích cú pháp chuỗi thành một đối tượng JavaScript.
+  const xmlhttp = new XMLHttpRequest();
+  xmlhttp.onload = function() {
+    const myObj = JSON.parse(this.responseText);
+    document.getElementById("demo").innerHTML = myObj.name;
+  }
+  xmlhttp.open("GET", "json_demo.txt");
+  xmlhttp.send();
+
+  //Khi sử dụng JSON.parse() trên JSON bắt nguồn từ một mảng, phương thức này sẽ trả về một mảng JavaScript, thay vì một đối tượng JavaScript.
+</script>
+</body>
+</html>
