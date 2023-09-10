@@ -1,7 +1,28 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
-
+import { useState,useEffect } from 'react'
 function Add() {
+    const [data,setData] = useState([]);
+    useEffect(() => {
+        
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://wlp.howizbiz.com/api/phanloaihoc?ranks[]=Kingdom&ranks[]=Phylum&ranks[]=Class&ranks[]=Order&ranks[]=Family&ranks[]=Genus',{
+                    method: 'GET',
+                    headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                    }
+                });
+                const data = await response.json();
+                setData(data);
+                console.log(data)
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData();
+    }, [])
     return (
         <>
             <Formik
@@ -79,8 +100,8 @@ function Add() {
                                 <Field
                                     className="w-100"
                                     type="text"
-                                    id="lastName"
-                                    name="lastName"
+                                    id="ten_khoa_hoc"
+                                    name="ten_khoa_hoc"
                                     placeholder='Tên khoa học '
                                 />
                             </div>
@@ -91,9 +112,9 @@ function Add() {
                                 </div>
                                 <Field
                                     className="w-100"
-                                    type="email"
-                                    id="email"
-                                    name="email"
+                                    type="text"
+                                    id="ten_tac_gia"
+                                    name="ten_tac_gia"
                                     placeholder='Tên Tác Giả'
                                 />
                             </div>
@@ -118,8 +139,8 @@ function Add() {
                             <Field
                                 className="w-100 mb-3"
                                 type="text"
-                                id="Name"
-                                name="Name"
+                                id="nguon_du_lieu"
+                                name="nguon_du_lieu"
                                 placeholder='Nguồn Dữ Liệu'
                             />
                         </div>
@@ -137,10 +158,17 @@ function Add() {
                                 <Field
                                     style={{ width: '300px' }}
                                     type="text"
-                                    id="Name"
-                                    name="Name"
+                                    id="kingdom"
+                                    name="kingdom_id"
                                     placeholder='Giới '
                                 />
+                                <div>{
+                                        // data.map((index)=>{
+                                        //     <ul>
+                                        //         <li>{index.rank}</li>
+                                        //     </ul>
+                                        // })
+                                    }</div>
                             </div>
                         </div>
                         <div className='col-lg-4' style={{ marginLeft: '15px' }}>
@@ -161,7 +189,7 @@ function Add() {
                         </div>
                         <div className='col-lg-4' style={{ marginLeft: '15px' }}>
                             <div>
-                                <span>Tên <span style={{ color: 'red' }}>*</span></span>
+                                <span>Lớp  <span style={{ color: 'red' }}>*</span></span>
                             </div>
                             <div>
                                 <Field
@@ -169,7 +197,7 @@ function Add() {
                                     type="text"
                                     id="Name"
                                     name="Name"
-                                    placeholder='Tên'
+                                    placeholder='Lớp '
                                 />
                             </div>
                         </div>
@@ -177,7 +205,7 @@ function Add() {
                     <div className='d-flex'>
                         <div className='col-lg-4'>
                             <div>
-                                <span>Tên <span style={{ color: 'red' }}>*</span></span>
+                                <span>Bộ  <span style={{ color: 'red' }}>*</span></span>
                             </div>
                             <div>
                                 <Field
@@ -185,13 +213,13 @@ function Add() {
                                     type="text"
                                     id="Name"
                                     name="Name"
-                                    placeholder='Tên'
+                                    placeholder='Bộ '
                                 />
                             </div>
                         </div>
                         <div className='col-lg-4' style={{ marginLeft: '15px' }}>
                             <div>
-                                <span>Tên <span style={{ color: 'red' }}>*</span></span>
+                                <span>Họ  <span style={{ color: 'red' }}>*</span></span>
                             </div>
                             <div>
                                 <Field
@@ -201,13 +229,13 @@ function Add() {
                                     type="text"
                                     id="Name"
                                     name="Name"
-                                    placeholder='Tên'
+                                    placeholder='Họ '
                                 />
                             </div>
                         </div>
                         <div className='col-lg-4' style={{ marginLeft: '15px' }}>
                             <div>
-                                <span>Tên <span style={{ color: 'red' }}>*</span></span>
+                                <span>Chi  <span style={{ color: 'red' }}>*</span></span>
                             </div>
                             <div>
                                 <Field
@@ -215,14 +243,14 @@ function Add() {
                                     type="text"
                                     id="Name"
                                     name="Name"
-                                    placeholder='Tên'
+                                    placeholder='Chi '
                                 />
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit">Thêm mới</button>
             </Form>
         </Formik >
         </>

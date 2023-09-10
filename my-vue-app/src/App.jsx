@@ -15,7 +15,6 @@ function App() {
       <Route path="/User" element={<User/>}></Route>
           <Route path='/TableUser' element={<TableUser/>}></Route>
           <Route path='/Add' element={<Add/>}></Route>
-
     </Routes>
     </>
   );

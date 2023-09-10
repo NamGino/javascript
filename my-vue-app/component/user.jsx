@@ -45,7 +45,8 @@ function User() {
                         </a>
                     </div>
                 </nav>
-                <MainUser />
+                <MainUser/>
+                <Outlet></Outlet>
             </div>
 
 
