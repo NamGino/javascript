@@ -1,21 +1,13 @@
 import { useState, useEffect } from 'react';
-import PaginationUser from './Paginate'
 import Table from 'react-bootstrap/Table';
 import { Pagination } from 'antd';
-import { MdLockReset, MdOutlineDelete } from 'react-icons/md';
 import { HiPencil } from 'react-icons/hi';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { RiAccountCircleFill } from 'react-icons/ri';
 import { GoSearch } from 'react-icons/go';
-import { BiPlus } from 'react-icons/bi';
-import { FormText } from 'react-bootstrap';
 import './user.css'
 import { Link } from 'react-router-dom';
-
+import DeleteOfAnimal from "./deleteAnimal";
 function TableUser() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,7 +16,6 @@ function TableUser() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //https://gtvtqs.samcom.com.vn/api/users?with=roles,createdBy,group,donVi&paginate=true&page={current}&itemsPerPage={defaultPageSize} (test)
         const response = await fetch(`https://wlp.howizbiz.com/api/species?paginate=true&page=${currentPage}&perpage=${itemPerpage}&with=roles,createdBy&search=&inactive=-1`);
         const data = await response.json();
         setData(data.list);
@@ -34,7 +25,7 @@ function TableUser() {
       }
     };
     fetchData();
-  }, [currentPage]);
+  },);
   const onPageChange = (page) => {
     setCurrentPage(page)
   }
@@ -51,7 +42,7 @@ function TableUser() {
           <input type="text" placeholder='Tìm kiếm theo tên hoặc số điện thoại' className='ps-4 form-control' />
         </div>
         <button className='btn-danger rounded-1' style={{ height: '37px', width: '120px' }}>
-          <span style={{ fontSize: '15px' }}> <Link className='text-decoration-none' to={'/Add'}>Thêm mới</Link> </span>
+          <span style={{ fontSize: '15px' }}> <Link className='text-decoration-none' to={'/User/Add'}>Thêm mới</Link> </span>
         </button>
       </div>
 
@@ -82,10 +73,10 @@ function TableUser() {
                   <td>{item.order.ten_khoa_hoc}</td>
                   <td>{item.family.ten_khoa_hoc}</td>
                   <td>{item.genus.ten_khoa_hoc}</td>
-                  <td  >
+                  <td>
                     <div className='d-flex'>
-                      < HiPencil className='text-danger mx-2' style={{ cursor: 'pointer' }} />
-                      <MdOutlineDelete className='text-danger' style={{ cursor: 'pointer' }} />
+                      <HiPencil className='text-danger mx-2' style={{ cursor: 'pointer' }} />
+                      <DeleteOfAnimal itemDelete={item}/>
                     </div>
                   </td>
                 </tr>
